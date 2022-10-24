@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Weather forecast</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Searching form -->
+      <div class="searh-form-container"></div>
+      <form class="search-form" id="search-form">
+        <input
+          type="search"
+          value=""
+          placeholder="Enter a city"
+          class="search-input"
+          id="search-input"
+          autocomplete="off"
+        />
+        <button class="search-btn" id="search-btn">Search</button>
+      </form>
+
+      <!-- City information , img-->
+
+      <div class="weather-information">
+        <div class="city-information">
+          <p class="date" id="date"></p>
+          <h1 class="city" id="city"></h1>
+          <div class="img-temp">
+            <img alt="" id="icon" />
+            <span class="temperature" id="temperature"></span
+            ><span class="units"
+              ><a href="#" class="celsius-degrees active" id="celsius-degrees"
+                >°C</a
+              >
+              |
+              <a href="#" class="fahrenheit-degrees" id="fahrenheit-dergees"
+                >°F</a
+              ></span
+            >
+          </div>
+
+          <!-- <h2 class="country" id="country"></h2> -->
+        </div>
+
+        <!-- temperature-information -->
+        <div class="temperature-information">
+          <div class="info">
+            <p class="weather-descr" id="weather-descr"></p>
+            <p class="wind"> <img src="./img/wind.png" alt="wind" width="18px"> Wind: <span id="wind"></span> km/h</p>
+            <p class="humidity"> <img src="./img/humidity.png" alt="humidity" width="18px"> Humidity: <span id="humidity"></span>%</p>
+          </div>
+        </div>
+      </div>
+      <!-- 5 days forecast -->
+
+      <!-- other information -->
+      <p class="created-by">
+        Created by
+        <a href="https://www.shecodes.io/graduates/54185-evgeniya-firsova"
+          >Evgeniya Firsova </a
+        >and is <a href=""> open-sourced on GitHub</a> and
+        <a href="https://www.netlify.com/"> hosted on Netlify</a>
+      </p>
+    </div>
+
+    <script src="./src/index.js"></script>
+  </body>
+</html>
