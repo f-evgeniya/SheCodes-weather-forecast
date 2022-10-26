@@ -29,6 +29,31 @@ function formatDate(date) {
   return `${day}, ${month} ${dateIndex}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="forecast-first-day">
+          <p class="weather-forecast-date">${day}</p>
+          <img
+            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+            alt=""
+            width="60px"
+          />
+          <div class="weather-forecast-temperature">
+            <span class="weather-forecast-temperature-max">15° </span>
+            <span class="weather-forecast-temperature-min">12° </span>
+          </div>
+        </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -93,6 +118,8 @@ function changeToCelsius(event) {
 }
 
 let celsiusTemp = null;
+
+displayForecast();
 
 let showFahrenheit = document.querySelector("#fahrenheit-dergees");
 showFahrenheit.addEventListener("click", changeToFahrenheit);
