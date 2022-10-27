@@ -54,6 +54,13 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "5ba04o3cadf5t843538c5f40f329e3dc";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -76,6 +83,8 @@ function displayTemperature(response) {
   celsiusTemp = Math.round(response.data.temperature.current);
   showCelsius.classList.add("active");
   showFahrenheit.classList.remove("active");
+
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
