@@ -29,26 +29,39 @@ function formatDate(date) {
   return `${day}, ${month} ${dateIndex}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="forecast-first-day">
-          <p class="weather-forecast-date">${day}</p>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML += `<div class="forecast-first-day">
+          <p class="weather-forecast-date">${formatDay(forecastDay.time)}</p>
           <img
-            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
-            alt=""
+            src="${forecastDay.condition.icon_url}"
+            alt="${forecastDay.condition.description}"
             width="60px"
           />
           <div class="weather-forecast-temperature">
-            <span class="weather-forecast-temperature-max">15° </span>
-            <span class="weather-forecast-temperature-min">12° </span>
+            <span class="weather-forecast-temperature-max">${Math.round(
+              forecastDay.temperature.maximum
+            )}° </span>
+            <span class="weather-forecast-temperature-min">${Math.round(
+              forecastDay.temperature.minimum
+            )}° </span>
           </div>
         </div>`;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
@@ -127,8 +140,6 @@ function changeToCelsius(event) {
 }
 
 let celsiusTemp = null;
-
-displayForecast();
 
 let showFahrenheit = document.querySelector("#fahrenheit-dergees");
 showFahrenheit.addEventListener("click", changeToFahrenheit);
