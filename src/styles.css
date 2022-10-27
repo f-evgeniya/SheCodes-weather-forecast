@@ -33,7 +33,7 @@ body {
   background: linear-gradient(
     109.6deg,
     rgb(141, 198, 255) 1.2%,
-    rgb(241, 247, 250) 100.2%
+    rgb(218, 237, 247) 100.2%
   );
   color: #22313f;
 }
@@ -47,7 +47,11 @@ body {
   height: 42px;
   font-size: 18px;
   padding: 0 40px;
-  background: rgb(241, 247, 250);
+  background: linear-gradient(
+    109.6deg,
+    rgb(218, 237, 247) 1.2%,
+    rgb(241, 247, 250) 100.2%
+  );
   border-radius: 5px;
   border: none;
   box-shadow: 5px 5px 5px rgb(156, 156, 156);
