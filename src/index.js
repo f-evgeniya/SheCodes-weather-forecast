@@ -37,9 +37,7 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
 
@@ -75,7 +73,6 @@ function getForecast(coordinates) {
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let description = document.querySelector("#weather-descr");
@@ -93,9 +90,6 @@ function displayTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
-  celsiusTemp = Math.round(response.data.temperature.current);
-  showCelsius.classList.add("active");
-  showFahrenheit.classList.remove("active");
 
   getForecast(response.data.coordinates);
 }
@@ -104,7 +98,6 @@ function search(city) {
   const apiKey = "5ba04o3cadf5t843538c5f40f329e3dc";
   const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}
 &key=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(displayTemperature);
 }
 
@@ -122,27 +115,3 @@ search("Kyiv");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temperature");
-  showCelsius.classList.remove("active");
-  showFahrenheit.classList.add("active");
-  currentTemp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-}
-
-function changeToCelsius(event) {
-  event.preventDefault();
-  let currentTemp = document.querySelector("#temperature");
-  showCelsius.classList.add("active");
-  showFahrenheit.classList.remove("active");
-  currentTemp.innerHTML = Math.round(celsiusTemp);
-}
-
-let celsiusTemp = null;
-
-let showFahrenheit = document.querySelector("#fahrenheit-dergees");
-showFahrenheit.addEventListener("click", changeToFahrenheit);
-
-let showCelsius = document.querySelector("#celsius-degrees");
-showCelsius.addEventListener("click", changeToCelsius);

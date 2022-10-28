@@ -78,11 +78,6 @@ body {
   margin-bottom: 15px;
   margin-top: 14px;
 }
-/* .country {
-  font-size: 18px;
-  margin-top: 5px;
-  font-weight: 700;
-} */
 
 .temperature-information {
   margin: 144px 30px 0 30px;
@@ -138,15 +133,6 @@ body {
   text-transform: uppercase;
 }
 
-.celsius-degrees,
-.fahrenheit-degrees {
-  text-decoration: none;
-  opacity: 0.7;
-  cursor: default;
-}
-.units .active {
-  opacity: 1;
-}
 .weather-forecast {
   margin: 30px 24px 0 24px;
   border-radius: 5px;
